@@ -1,0 +1,35 @@
+@prefix ex: <http://example.com/kad/> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+
+ex:Convergence ex:hasGenre ex:Platformer ;
+    ex:hasTitle "CONVERGENCE: a League of Legends Story" ;
+    ex:publishedBy ex:Riot ;
+    rdfs:subClassOf ex:VideoGame .
+
+ex:LoL a ex:VideoGame ;
+    ex:availableOn ex:RiotClient ;
+    ex:hasGenre ex:MOBA ;
+    ex:hasTitle "Leauge of Legends" ;
+    ex:publishedBy ex:Riot .
+
+ex:availableOn rdfs:range ex:Platform .
+
+ex:founded rdfs:domain ex:Publisher .
+
+ex:hasGenre rdfs:range ex:Genre .
+
+ex:hasTitle rdfs:domain ex:Videogame ;
+    rdfs:subPropertyOf rdfs:Literal .
+
+ex:publishedBy rdfs:range ex:Publisher .
+
+ex:RiotClient rdfs:subPropertyOf ex:Platform .
+
+ex:Platform rdfs:subPropertyOf ex:Computer .
+
+ex:Riot a ex:Publisher ;
+    rdfs:label "Riot Games" ;
+    ex:founded "2006" .
+
+ex:VideoGame rdfs:subClassOf ex:Computer .
+

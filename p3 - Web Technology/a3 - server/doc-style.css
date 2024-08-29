@@ -1,0 +1,105 @@
+  body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: rgb(240, 240, 240);
+  }
+
+  .main {
+    max-width: 900px;
+    margin: 20px auto;
+    padding: 20px;
+    background-color: white;
+    border-radius: 50px;
+    box-shadow: 0 3px 6px lightgray;
+  }
+
+  h1.title {
+    text-align: center;
+    color: rgb(60, 60, 60);
+  }
+
+  nav {
+    text-align: center;
+  }
+
+  nav a {
+    color: rgb(60, 60, 60);
+  }
+
+nav a:hover {
+    color: purple;
+}
+
+section {
+    margin-top: 20px;
+    margin-bottom: 20px;
+}
+
+h2 {
+    color: rgb(60, 60, 60);
+}
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+th, td {
+    padding: 10px;
+    border-bottom: 2px solid lightgray;
+}
+
+th {
+    text-align: left;
+    background-color:rgb(240, 240, 240);
+}
+
+p {
+    color: rgb(60, 60, 60);
+    line-height: 1.5;
+}
+
+/* Sizes for mobil */
+@media screen and (max-width: 480px) {
+  body {
+    font-size: 11px; 
+    margin: 10px;
+  }
+  h1.title {
+    font-size: 16px; 
+    margin-bottom: 10px;
+  }
+  h2.basich2 {
+    font-size: 12px; 
+    margin-top: 10px; 
+  }
+  p {
+    font-size: 11px;
+    margin-bottom: 10px; 
+  }
+  .secretHover, .secretActive {
+    display: none;
+  }
+}
+
+/*Printing web adjustments*/
+@media print {
+  body {
+    orphans: 4;
+    widows: 2;
+    margin: 0; 
+    font-size: 12pt; 
+  }
+
+  h2 {
+    page-break-after: avoid;
+    page-break-before: auto;
+  }
+
+  h2 {
+    page-break-after: avoid;
+    page-break-before: auto;
+  }
+  
+}

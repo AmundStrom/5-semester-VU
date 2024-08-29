@@ -1,0 +1,29 @@
+assignment3.txt
+2822237
+[ 7 12  4  2  5 10  1 15 16 14]
+[ 8  3  6 19 18 17  0  9 13 11]
+
+The different search algorithms differ in their strategies for exploring and selecting nodes in the tree.
+
+Breadth First Search will explore all the neighbor nodes at the present depth prior to moving on to nodes at the next depth level. This strategy makes BFS complete and ensures that it will find the shortest path to the goal state, at the cost of exploring a lot of nodes.
+
+Depth First Search explores as deep as possible along each branch before backtracking to the latest node with a different path. DFS is neither complete or optimal, meaning it is not guaranteed that it will find a goal state if there exists one and it is not guaranteed that it will find the shortest path. But in the case of Schnapsen it will always be faster than BFS since the goal state exists deeper into the tree.
+
+Gready Best First Search uses a heuristic function to estimate the cost to reach the goal from a given node. It always explores the node that appears to be the most promising based on the heuristic. In our case the heuristic is the distance to the goal, based on points. GBFS is also neither complete or optimal, it may repeat nodes that aleardy have been explored and will end up in a cycle. It may also lead to a false start, choosing the wrong branch at the very start.
+
+In the case of the current game state, we get these results:
+    - BFS generated 5041 nodes, solution [7, 3, 2, 6, 4, 0, 12]
+    - DFS generated 13 nodes, solution [14, 13, 15, 11, 10, 9, 1, 0, 16, 17, 5, 6]
+    - GBFS generated 8 nodes, solution [2, 3, 1, 0, 4, 6, 7]
+
+We see that BFS is by far the slowset but finds an optimal solution. DFS is much faster but does not find an optimal soultion. GBFS is the fastest and in this case finds an optimal soultion. We see that the soultion consists of the heighest valued cards, which is choosen by the heuristic.
+
+
+Both Gready Best First Search and A* Algorithm uses heuristics to choose which nodes to explore, but they differ in how they use the evaluation function.
+
+Gready Best First Search only consieders the value from the heuristic to choose the next node. The evaluation function is used to calculate the node with the most promising value, and looks like f(n) = h(n), where h(n) is the heuristic value estimating the cost from a node n to the goal state.
+
+A* Algorithm considers both the value from the heuristic plus the value it cost to get to that node. It selects the node that minimizes the evaluation function f(n) = g(n) + h(n), where g(n) is the cost it takes to reach a specific node n from the start state. h(n) is the same as before, the heuristic value estimating the cost from a node n to the goal state.
+
+I had some errors with the A* function, and could therefore compare the different solutions.
+

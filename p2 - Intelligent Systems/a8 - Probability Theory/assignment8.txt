@@ -1,0 +1,25 @@
+assignment8.txt
+def computeJPD(l,d,b,randomCards):
+
+    jointProbability = 0
+
+    for card in randomCards:
+        if card[1:] == (l, d, b):
+            jointProbability += 1
+
+    jointProbability = jointProbability / len(randomCards)
+
+    # print(jointProbability)
+    return(jointProbability)
+
+def bayes_theorem(p_a, p_b, p_ba):
+    assert p_b != 0, "cannot divide by 0"
+
+    p_ab = (p_ba * p_a) / p_b
+    
+    print(p_ab)
+    return(p_ab)
+
+
+To calculate the probability for P(B|L) we need to use bayes theorem and therefore need P(B), P(L) and P(L|B). To get the values P(B) and P(L) we need to compute the joint probability for every case where 'b' is true in (l,d,b) and 'l' is true in (l,d,b) and sum them up respectivly. Then we need the probability for P(L|B) which is the propability where both 'l' and 'b' is true in (l,d,b) divided by P(B). This turns out to always be 1, since every black wedding card is always a low card. Finally we use these probabilites in bayes theorem to get P(B|L).
+

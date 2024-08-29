@@ -1,0 +1,76 @@
+assignment11.txt
+
+player_game_state_representation = get_state_feature_vector(perspective)
+leader_move_representation = get_move_feature_vector(leader_move)
+follower_move_representation = get_move_feature_vector(follower_move)
+
+
+bot1 = RandBot(rand=random.Random(41), name="randbot1")
+bot2 = RandBot(rand=random.Random(42), name="randbot2")
+
+
+The numbers berfore || is a vector that represents the features of the current state in the game, and the features for the leader move and follower move.
+The number after || is an bit indicating if the current move resulted in a loss or win for the bot. loss = 0, while win = 1.
+
+These numbers are used for the bot to train, it will look at the vector representation of the features and see if this resulted in a win or a loss.
+Then it will learn the correlation between the features and the result.
+
+
+the "train_model()" function takes an arguemnt that will dicide which algorithm it will use to train the model. The different arguemnts the model
+support is 'Neural Network' and 'Logistic Regression', which are both machine learning models but vary in complexity, architecture, and which 
+application they work best in. The key difference between the two models is that a Neural Network uses different layers of neurons to predict what
+it should output given an input. While Logistic Regression uses a hyperplane to separete the outputs and uses a function to calculate the probability
+that a given input belongs to the different classes of the hyperplane.
+
+
+bot1 = MLPlayingBot(model_location=model_location, name="MLbot")
+bot2 = RandBot(rand=random.Random(41), name="randbot1")
+
+
+# Code taken from assignment 4
+from schnapsen.bots import RdeepBot
+
+myrepeats = 10
+
+# Create bots.
+bot1 = MLPlayingBot(model_location=model_location, name="MLbot")
+bot2 = RandBot(rand=random.Random(41), name="randbot1")
+bot3 = RdeepBot(num_samples=10, depth=5, rand=random.Random(42), name="rdeepbot")
+
+bots = [bot1, bot2, bot3]
+n = len(bots)
+wins = {str(bot): 0 for bot in bots}
+matches = [(p1, p2) for p1 in range(n) for p2 in range(n) if p1 < p2]
+
+totalgames = (n * n - n) / 2 * myrepeats
+playedgames = 0
+
+print("Playing {} games:".format(int(totalgames)))
+for a, b in matches:
+    for r in range(myrepeats):
+        if random.choice([True, False]):
+            p = [a, b]
+        else:
+            p = [b, a]
+
+        winner_id, game_points, score = engine.play_game(
+            bots[p[0]], bots[p[1]], random.Random(45)
+        )
+
+        wins[str(winner_id)] += game_points
+
+        playedgames += 1
+        print(
+            "Played {} out of {:.0f} games ({:.0f}%): {} 
+".format(
+                playedgames, totalgames, playedgames / float(totalgames) * 100, wins
+            )
+        )
+
+
+After playing 30 games this was the result
+
+Played 10 out of 30 games (33%): {'MLbot': 15, 'randbot1': 2, 'rdeepbot': 0}
+Played 20 out of 30 games (67%): {'MLbot': 20, 'randbot1': 2, 'rdeepbot': 8}
+Played 30 out of 30 games (100%): {'MLbot': 20, 'randbot1': 2, 'rdeepbot': 31}
+

@@ -1,0 +1,199 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>YE THE GOAT</title>
+    <link rel="stylesheet" type="text/css" href="style.css">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <script src="script.js" defer></script>
+</head>
+
+<body><div class="main">
+
+    <!-- Title -->
+    <h1 class="title">The Discography of Kanye West</h1>
+
+    <!-- Navigation section -->
+    <nav>
+        <ul>
+            <li><a href="#albums">Albums</a></li>
+            <li><a href="#grammys">Grammy Awards</a></li>
+            <li><a href="#artist">More about the Artist</a></li>
+        </ul>
+    </nav>
+
+    <!-- List of kanye albums section -->
+    <section id="albums">
+        <h2 class="basich2">List of 12 Kanye West Albums:</h2>
+        <ol>
+            <li>The Collage Dropout</li>
+            <li>Late Registartion</li>
+            <li>Graduation</li>
+            <li>808s & Heartbreak</li>
+            <li>My Beautiful Dark Twisted Fantasy</li>
+            <li>Watch the Throne</li>
+            <li>Yeezus</li>
+            <li>The Life of Pablo</li>
+            <li>Ye</li>
+            <li>JESUS IS KING</li>
+            <li>Donda</li>
+            <li>Donda 2</li>
+        </ol>
+    </section>
+
+    <!-- List of Grammys -->
+    <section id="grammys">
+        <h2 class="basich2">Kanye Grammy Awards</h2>
+        <p> Kanye west has a mind-boggling 24 Grammy Award Wins for a combination of singles and albums between 2005 and 2022. Here are top 15 Grammy Award Wins from Kanye West over the years:</p>
+        <dl>
+            <dt><strong class="strongYear">Year 2005</strong></dt>
+            <dd>- Best Rap Album for The College Dropout</dd>
+            <dd>- Best R&B Song Grammy Award</dd>
+            <dt><strong class="strongYear">Year 2006</strong></dt>
+            <dd>- Best Rap Album for Late Registration</dd>
+            <dd>- Best Rap Solo Performance Grammy Award</dd>
+            <dt><strong class="strongYear">Year 2008</strong></dt>
+            <dd>- Best Rap Album for Graduation</dd>
+            <dd>- Best Rap Song Grammy Award</dd>
+            <dt><strong class="strongYear">Year 2009</strong></dt>
+            <dd>- Best Rap Performance by a Duo or Group Grammy Award</dd>
+            <dt><strong class="strongYear">Year 2012</strong></dt>
+            <dd>- Best Rap Album for My Beautiful Dark Twisted Fantasy</dd>
+            <dd>- Best Rap Performance Grammy Award</dd>
+            <dd>- Best Rap/Sung Collaboration Grammy Award</dd>
+            <dt><strong class="strongYear">Year 2013</strong></dt>
+            <dd>- Best Rap/Sung Collaboration Grammy Award</dd>
+            <dd>- Best Rap Performance Grammy Award</dd>
+            <dt><strong class="strongYear">Year 2021</strong></dt>
+            <dd>- Best Contemporary Christian Music Album for Jesus Is King</dd>
+            <dt><strong class="strongYear">Year 2022</strong></dt>
+            <dd>- Best Rap Song Grammy Award</dd>
+            <dd>- Best Melodic Rap Performance Grammy Award</dd>
+        </dl>  
+    </section>
+
+    <!-- Artist information -->
+    <section id="artist">
+        <h2 class="basich2"><u>More about the artist</u></h2>
+        <p> 
+            Every Kanye album portrays a certain period his life. Thus to understand what a Kanye album is all about, we must look at where Kanye as a person was at the time of making.
+            Below gallery shows Kanye's album covers:
+        </p>
+    </section>
+
+    <div id="yearContainer">
+    <!--Buttns will be added dynamically-->
+    </div>
+
+    <div class="search-container">
+        <input type="text" id="searchInput" placeholder="Search images...">
+        <button class="galleryButton" id="newItemOpen">New Item</button>
+        <button class="galleryButton" id="updateItemOpen">Update Item</button>
+        <button class="galleryButton" id="resetOpen">Reset</button>
+    </div>
+
+    <!-- Code taken from: https://www.w3schools.com/howto/howto_css_modals.asp -->
+    <!-- New Item Modal -->
+    <div id="newItemModal" class="modal">
+        <!-- Modal content -->
+        <div class="modal-content">
+            <div class="modal-header">
+                <span id="newItemClose" class="close">&times;</span>
+                <h2>Insert New Item</h2>
+            </div>
+            <div class="modal-body">
+                <form id="newItemForm">
+                    <label for="poster">Image:</label>
+                    <input type="url" name="poster" id="poster" placeholder="URL" required>
+                    
+                    <div class="form-row">
+                        <div>
+                            <label for="name">Name:</label>
+                            <input type="text" name="name" id="name" placeholder="Name" required>
+                        </div>
+                        <div>
+                            <label for="year">Year:</label>
+                            <input type="number" name="year" id="year" placeholder="Year" required>
+                        </div>
+                        <div>
+                            <label for="genre">Genre:</label>
+                            <input type="text" name="genre" id="genre" placeholder="Genre" required>
+                        </div>
+                    </div>
+            
+                    <label for="description">Description:</label>
+                    <textarea id="description" name="description" placeholder="Write something..." rows="2" cols="25" required></textarea>
+                    
+                    <input type="submit" value="Submit">
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <!-- Code taken from: https://www.w3schools.com/howto/howto_css_modals.asp -->
+    <!-- Update Item Modal -->
+    <div id="updateItemModal" class="modal">
+        <!-- Modal content -->
+        <div class="modal-content">
+            <div class="modal-header">
+                <span id="updateItemClose" class="close">&times;</span>
+                <h2>Update Existing Item</h2>
+                <p>The item number is counted from left-to-right, the first item has number 1</p>
+            </div>
+            <div class="modal-body">
+                <form id="updateItemForm">
+                    <label for="itemNumber">Item Number:</label>
+                    <input type="number" name="itemNumber" id="itemNumber" placeholder="Number" required>
+
+                    <label for="poster">Image:</label>
+                    <input type="url" name="poster" id="poster" placeholder="URL" >
+                    
+                    <div class="form-row">
+                        <div>
+                            <label for="name">Name:</label>
+                            <input type="text" name="name" id="name" placeholder="Name" required>
+                        </div>
+                        <div>
+                            <label for="year">Year:</label>
+                            <input type="number" name="year" id="year" placeholder="Year" required>
+                        </div>
+                        <div>
+                            <label for="genre">Genre:</label>
+                            <input type="text" name="genre" id="genre" placeholder="Genre" required>
+                        </div>
+                    </div>
+            
+                    <label for="description">Description:</label>
+                    <textarea id="description" name="description" placeholder="Write something..." rows="2" cols="25" required></textarea>
+                    
+                    <input type="submit" value="Submit">
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <!-- Code taken from: https://www.w3schools.com/howto/howto_css_modals.asp -->
+    <!-- Reset Modal -->
+    <div id="resetModal" class="modal">
+        <!-- Modal content -->
+        <div class="modal-content">
+            <div class="modal-header">
+                <span id="resetClose" class="close">&times;</span>
+                <h2>Reset Existing Items</h2>
+                <p>Are you sure you want to reset existing items? This will return the gallery to the default state.</p>
+            </div>
+            <div class="modal-body">
+                <div class="reset-button-container">
+                    <button class="reset-button" id="resetButton">Reset</button>
+                </div>
+            </div>
+            <div class="modal-footer"></div>
+        </div>
+    </div>
+
+    <div class="gallery" id="imageGallery">
+        <!-- Images will be dynamically added here -->
+    </div>
+
+</div></body>
+</html>

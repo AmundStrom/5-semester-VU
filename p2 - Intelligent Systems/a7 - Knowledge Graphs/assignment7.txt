@@ -1,0 +1,26 @@
+assignment7.txt
+
+g.add((s.TenHearts, RDF.type, s.Hearts))
+g.add((s.TenHearts, RDF.type, s.Ten))
+g.add((s.TenHearts, s.value, Literal('10')))
+
+g.add((s.TenSpades, RDF.type, s.Spades))
+g.add((s.TenSpades, RDF.type, s.Ten))
+g.add((s.TenSpades, s.value, Literal('10')))
+
+g.add((s.TenDiamonds, RDF.type, s.Diamonds))
+g.add((s.TenDiamonds, RDF.type, s.Ten))
+g.add((s.TenDiamonds, s.value, Literal('10')))
+
+g.add((s.TenClubs, RDF.type, s.Clubs))
+g.add((s.TenClubs, RDF.type, s.Ten))
+g.add((s.TenClubs, s.value, Literal('10')))
+
+
+The RDFS language has a bunch of different rules that allows for entailment in a knowledge graph. An example of such a rule could be that if you have these triples:
+
+uuu rdfs:subClassOf xxx . 
+vvv rdf:type uuu .          You can entail this triple: vvv rdf:type xxx .
+
+And it just so happens that this was the rule that was used in the above query, that made it possbile to get all the different cards in our knowledge graph.
+

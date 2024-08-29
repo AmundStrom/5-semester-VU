@@ -1,0 +1,45 @@
+assignment9.txt
+
+# We want to avoid the denominators to be 0, so we check for that.
+if u == 0 or u - 1 == 0 or u - 2 == 0 or u - 3 == 0 or u - 4 == 0:
+    probability = 0
+
+else:
+    probability = 1
+    for i in range(5):
+        # Probability that i-th card in opponent hand is not dangerous
+        p_ba = (u - d - i) / (u - i)
+
+        # P(opponent does not have a dangerous card)
+        probability = probability * p_ba
+
+if probability > max_probability:
+    max_probability = probability
+    chosen_move = move
+
+# I am pretty sure there was a typo in line 127, it said "return move", but i changed it to "return chosen_move". Since "move" only exists inside the for-loop and the return statement is outside of the for-loop. I also changed this in probability_bot_utility.py
+
+
+utility_heuristics = probability / points
+
+
+After running a 10 game tournament multiple times where ProbabilityRandBot and rdeepbot played against each other, the avarage score was ProbabilityRandBot won 0 to 2 points, while rdeepbot won 18 to 25 points.
+
+
+Again, after running a 10 game tournament multiple times where ProbabilityUtilityRandBot and rdeepbot played against each other, I could not find any improvement in amount of games won.
+
+
+if leader_move is not None:
+    # Get valid moves that are of trump suit
+    trump_suit_moves = []
+    for move in valid_moves:
+        if move.cards[0].suit == perspective.get_trump_suit():
+            trump_suit_moves.append(move)
+
+    # Play random card that is of trump suit
+    if len(trump_suit_moves) > 0:
+        return self.rng.choice(trump_suit_moves)
+
+
+In "probability_bot.py" I made the bot play a trump card if it has it when it is the leader, this actually improved the winrate. Again, I was running a 10 game tournament multiple times where ProbabilityRandBot and rdeepbot played against each other. The avarage score was that ProbabilityRandBot won 3 to 11 points, while rdeepbot won 9 to 20 points
+

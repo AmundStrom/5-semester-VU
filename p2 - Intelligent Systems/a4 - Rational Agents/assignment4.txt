@@ -1,0 +1,90 @@
+assignment4.txt
+
+Amund Størm - ast101
+
+The RdeepBot was defined using these parameters: "num_samples=10, depth=5, rand=random.Random(41)". In both tournaments (rdeep vs. rand; rdeep vs. bully), RdeepBot won every single game, even playing the 10 games several times.
+
+
+{'rdeepbot': 13, 'randbot': 0, 'bullybot': 0} - 5 games played
+{'rdeepbot': 23, 'randbot': 0, 'bullybot': 0} - 10 games played
+{'rdeepbot': 29, 'randbot': 0, 'bullybot': 0} - 15 games played
+{'rdeepbot': 36, 'randbot': 0, 'bullybot': 0} - 20 games played
+{'rdeepbot': 36, 'randbot': 3, 'bullybot': 6} - 25 games played
+{'rdeepbot': 36, 'randbot': 8, 'bullybot': 7} - 30 games played
+
+RdeepBot won the majoirty of the games, but after game 20 it looks like it stopped winning. This is because the games are played 1 versus 1, hence RdeepBot played the first 20 games and did not play the last 10 games.
+
+
+The bully bot has 3 possible ways of determening what card it wants to play, and chooses in given order:
+    - Play random trump card if it has it
+    - Play random card of the current suit if the bot is a follower of a trick
+    - Play card with the highest score
+It will always go through these same steps, it checks if it can preform either step 1 or 2, if both fails it will play the highest value card.
+
+
+If i would give scientific evidence that rdeep is better than rand, i would provide statistics about thousands of games which shows who won. Most likley rdeep will win the majority of games, but there is a scenario that by pure chance rand will win. But this scenario is most likley very rare which makes rand very inconsistent, therefore rdeep would be the preffered choice since it is more consistent.
+
+
+My bot will play a random card that is not of the same suit that it played last time. For the first play it will just play a random card.
+
+
+
+import random
+from typing import Optional
+from schnapsen.game import Bot, PlayerPerspective, Move, SchnapsenTrickScorer, RegularMove
+from schnapsen.deck import Card, Suit
+
+
+class MyBot(Bot):
+    def __init__(self, rand: random.Random, name: Optional[str] = None) -> None:
+        super().__init__(name)
+        self.rng = rand
+        self.prev_suit: Suit = None
+
+    def get_move(self, perspective: PlayerPerspective, leader_move: Optional[Move], ) -> Move:
+        moves: list[Move] = perspective.valid_moves()
+
+        if self.prev_suit != None:
+            new_suit: list[Move] = []
+
+            # get suit of every card in valid moves, that is not equal to the previous played suit by this bot
+            for move in moves:
+                cards_of_move: list[Card] = move.cards
+                card_of_move: Card = cards_of_move[0]
+
+                if card_of_move.suit != self.prev_suit:
+                    new_suit.append(move)
+
+            # Choose a random card
+            if len(new_suit) > 0:
+                move = self.rng.choice(new_suit)
+                self.remember_suit(move)
+                return move
+                
+        # Make a random move
+        move = self.rng.choice(moves)
+        self.remember_suit(move)
+        return move
+
+    def remember_suit(self, move):
+        '''
+        Remeber the suit that will be played
+        '''
+        cards_of_move: list[Card] = move.cards
+        card_of_move: Card = cards_of_move[0]
+
+        self.prev_suit = card_of_move.suit
+
+Playing 10 games:
+{'randbot': 2, 'mybot': 0} 
+{'randbot': 3, 'mybot': 0} 
+{'randbot': 3, 'mybot': 1} 
+{'randbot': 3, 'mybot': 2} 
+{'randbot': 4, 'mybot': 2} 
+{'randbot': 6, 'mybot': 2} 
+{'randbot': 6, 'mybot': 5} 
+{'randbot': 6, 'mybot': 8} 
+{'randbot': 7, 'mybot': 8} 
+{'randbot': 7, 'mybot': 10} 
+
+

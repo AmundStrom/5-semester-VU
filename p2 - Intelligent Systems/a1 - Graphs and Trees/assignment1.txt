@@ -1,0 +1,22 @@
+assignment1.txt
+2822237
+
+In the code above we initialized a python dictonary where the six nodes in the graph are represented as keys (a-f).
+Each key has a value containing the list of connections to other nodes.
+
+
+The code above is a matrix which is lists within a list, thus creating rows and columns.
+Each row and column is represented by a comment which tells what node it is. 
+Each row and column describes the connection to other nodes with either a zero (not connected) or one (connected).
+
+
+The search algorithm almost works the same way as adding new values into the binary tree.
+The algorithm goes through 1-3 steps and takes a value as input:
+    1 - Compare the input with the current node
+        Return if it is equal, continue otherwise.
+    2 - Check if LEFT node exists and if the input is SMALLER than the value in the current node
+        Traverse to the left node if this is the case, continue otherwise.
+    3 - Check if RIGHT node exists and if the input is LARGER than the value in the current node
+        Traverse to the RIGHT node if this is the case, continue otherwise.
+    4 - Error
+

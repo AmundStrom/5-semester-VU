@@ -1,0 +1,37 @@
+assignment5.txt
+
+The minimax algorithm can only be used for phase 2 of the schnapsen game because this phase is deterministic, meaning we know every card on the board (e.g. our hand and the opponents hand) and can therefore figure out which is the optimal play.
+
+
+Heuristics are used in minimax algotithms where you are not guaranteed to find the optimal solution, and is therefore used to improve efficiency in the search process or guide the algorithm to choose certian moves. An example would be that in some scenarios it is not feasible to search the entire tree to find an solution, therefore you canset an depth limit where the algorithm would stop its search. By doing this it is not guaranteed that you would find the optimal solution, but the algorithm will not search forever.
+
+In our case heuristics was not used since our search tree is very small, compare to tree's such as chess and GO.
+
+
+if maximizing and (value > best_value): # we are in the Maximize part of the algorithm
+    best_value = value
+    best_move = move
+
+elif not maximizing and (value < best_value): # we are in the Minimize part of the algorithm
+    best_value = value
+    best_move = move 
+
+
+if maximizing:
+    if value > best_value:
+        best_move = move
+        best_value = value
+
+    alpha = max(alpha, best_value)  # alphabeta pruning
+    if beta <= alpha:
+        break
+
+else:
+    if value < best_value:
+        best_move = move
+        best_value = value
+
+    beta = min(beta, best_value)  # alphabeta pruning
+    if beta <= alpha:
+        break
+

@@ -1,0 +1,142 @@
+
+_:node1 a <http://www.w3.org/2002/07/owl#Restriction>;
+  <http://www.w3.org/2002/07/owl#onProperty> <http://www.semanticweb.org/admin/ontologies/2023/8/Esports/partOfTournament>;
+  <http://www.w3.org/2002/07/owl#someValuesFrom> <http://www.semanticweb.org/admin/ontologies/2023/8/Esports/Tournament> .
+
+_:node2 a <http://www.w3.org/2002/07/owl#Restriction>;
+  <http://www.w3.org/2002/07/owl#onProperty> <http://www.semanticweb.org/admin/ontologies/2023/8/Esports/partOfTournament>;
+  <http://www.w3.org/2002/07/owl#someValuesFrom> <http://www.semanticweb.org/admin/ontologies/2023/8/Esports/Tournament> .
+
+_:node3 a <http://www.w3.org/2002/07/owl#Restriction>;
+  <http://www.w3.org/2002/07/owl#onProperty> <http://www.semanticweb.org/admin/ontologies/2023/8/Esports/competeIn>;
+  <http://www.w3.org/2002/07/owl#someValuesFrom> <http://www.semanticweb.org/admin/ontologies/2023/8/Esports/Game> .
+
+_:node4 a <http://www.w3.org/2002/07/owl#Restriction>;
+  <http://www.w3.org/2002/07/owl#onProperty> <http://www.semanticweb.org/admin/ontologies/2023/8/Esports/partOfTeam>;
+  <http://www.w3.org/2002/07/owl#someValuesFrom> <http://www.semanticweb.org/admin/ontologies/2023/8/Esports/Team> .
+
+<http://dbpedia.org/resource/Counter-Strike:_Global_Offensive> a <http://www.semanticweb.org/admin/ontologies/2023/8/Esports/Game> .
+
+<http://dbpedia.org/resource/Dota_2> a <http://www.semanticweb.org/admin/ontologies/2023/8/Esports/Game> .
+
+<http://dbpedia.org/resource/FIFA_(video_game)> a <http://www.semanticweb.org/admin/ontologies/2023/8/Esports/Game> .
+
+<http://dbpedia.org/resource/Fortnite_Battle_Royale> a <http://www.semanticweb.org/admin/ontologies/2023/8/Esports/Game> .
+
+<http://dbpedia.org/resource/League_of_Legends> a <http://www.semanticweb.org/admin/ontologies/2023/8/Esports/Game> .
+
+<http://dbpedia.org/resource/Tom_Clancy's_Rainbow_Six_Siege> a <http://www.semanticweb.org/admin/ontologies/2023/8/Esports/Game> .
+
+<http://dbpedia.org/resource/Valorant> a <http://www.semanticweb.org/admin/ontologies/2023/8/Esports/Game> .
+
+<http://purl.org/dc/elements/1.1/creator> a <http://www.w3.org/2002/07/owl#AnnotationProperty> .
+
+<http://www.semanticweb.org/admin/ontologies/2023/8/Esports> a <http://www.w3.org/2002/07/owl#Ontology>;
+  <http://purl.org/dc/elements/1.1/creator> "Amund";
+  <http://www.w3.org/2000/01/rdf-schema#comment> "Contain metadata about esports in CS:GO, League of Legends and Super Smash Bros. Ultimate";
+  <http://www.w3.org/2000/01/rdf-schema#label> "Esports" .
+
+<http://www.semanticweb.org/admin/ontologies/2023/8/Esports/CS:GO> a <http://www.semanticweb.org/admin/ontologies/2023/8/Esports/Game>,
+    <http://www.w3.org/2002/07/owl#NamedIndividual>;
+  <http://www.semanticweb.org/admin/ontologies/2023/8/Esports/hasTitle> "Counter strike : Global offensive";
+  <http://www.semanticweb.org/admin/ontologies/2023/8/Esports/partOfTournament> <http://www.semanticweb.org/admin/ontologies/2023/8/Esports/ESL_One> .
+
+<http://www.semanticweb.org/admin/ontologies/2023/8/Esports/Delfino_Maza> a <http://www.semanticweb.org/admin/ontologies/2023/8/Esports/Tournament>,
+    <http://www.w3.org/2002/07/owl#NamedIndividual>;
+  <http://www.semanticweb.org/admin/ontologies/2023/8/Esports/firstYearHosted> 2023;
+  <http://www.semanticweb.org/admin/ontologies/2023/8/Esports/hostGame> <http://www.semanticweb.org/admin/ontologies/2023/8/Esports/SSU> .
+
+<http://www.semanticweb.org/admin/ontologies/2023/8/Esports/ESL_One> a <http://www.w3.org/2002/07/owl#NamedIndividual>;
+  <http://www.semanticweb.org/admin/ontologies/2023/8/Esports/competeIn> <http://www.semanticweb.org/admin/ontologies/2023/8/Esports/CS:GO>;
+  <http://www.semanticweb.org/admin/ontologies/2023/8/Esports/firstYearHosted> 2014 .
+
+<http://www.semanticweb.org/admin/ontologies/2023/8/Esports/Fnatic> a <http://www.w3.org/2002/07/owl#NamedIndividual>;
+  <http://www.semanticweb.org/admin/ontologies/2023/8/Esports/Member> <http://www.semanticweb.org/admin/ontologies/2023/8/Esports/olofmeister>;
+  <http://www.semanticweb.org/admin/ontologies/2023/8/Esports/foundedIn> "23 July 2004" .
+
+<http://www.semanticweb.org/admin/ontologies/2023/8/Esports/Game> a <http://www.w3.org/2002/07/owl#Class>;
+  <http://www.w3.org/2000/01/rdf-schema#subClassOf> _:node2;
+  <http://www.w3.org/2002/07/owl#equivalentClass> _:node1 .
+
+<http://www.semanticweb.org/admin/ontologies/2023/8/Esports/League> a <http://www.w3.org/2002/07/owl#Class> .
+
+<http://www.semanticweb.org/admin/ontologies/2023/8/Esports/LoL> a <http://www.w3.org/2002/07/owl#NamedIndividual>;
+  <http://www.semanticweb.org/admin/ontologies/2023/8/Esports/hasTitle> "League of Legends";
+  <http://www.semanticweb.org/admin/ontologies/2023/8/Esports/partOfTournament> <http://www.semanticweb.org/admin/ontologies/2023/8/Esports/World_Championship> .
+
+<http://www.semanticweb.org/admin/ontologies/2023/8/Esports/Member> a <http://www.w3.org/2002/07/owl#ObjectProperty>;
+  <http://www.w3.org/2000/01/rdf-schema#domain> <http://www.semanticweb.org/admin/ontologies/2023/8/Esports/Team>;
+  <http://www.w3.org/2000/01/rdf-schema#range> <http://www.semanticweb.org/admin/ontologies/2023/8/Esports/Player> .
+
+<http://www.semanticweb.org/admin/ontologies/2023/8/Esports/Person> a <http://www.w3.org/2002/07/owl#Class> .
+
+<http://www.semanticweb.org/admin/ontologies/2023/8/Esports/Phreak> a <http://www.semanticweb.org/admin/ontologies/2023/8/Esports/Person>,
+    <http://www.w3.org/2002/07/owl#NamedIndividual>;
+  <http://www.semanticweb.org/admin/ontologies/2023/8/Esports/fullName> "David Turley";
+  <http://www.semanticweb.org/admin/ontologies/2023/8/Esports/organize> <http://www.semanticweb.org/admin/ontologies/2023/8/Esports/World_Championship> .
+
+<http://www.semanticweb.org/admin/ontologies/2023/8/Esports/Player> a <http://www.w3.org/2002/07/owl#Class>;
+  <http://www.w3.org/2000/01/rdf-schema#subClassOf> _:node4, <http://www.semanticweb.org/admin/ontologies/2023/8/Esports/Person>;
+  <http://www.w3.org/2002/07/owl#equivalentClass> _:node3 .
+
+<http://www.semanticweb.org/admin/ontologies/2023/8/Esports/Rekkles> a <http://www.w3.org/2002/07/owl#NamedIndividual>;
+  <http://www.semanticweb.org/admin/ontologies/2023/8/Esports/fullName> "Carl Martin Erik Larsson";
+  <http://www.semanticweb.org/admin/ontologies/2023/8/Esports/partOfTeam> <http://www.semanticweb.org/admin/ontologies/2023/8/Esports/Fnatic> .
+
+<http://www.semanticweb.org/admin/ontologies/2023/8/Esports/Riot_Games> a <http://www.semanticweb.org/admin/ontologies/2023/8/Esports/League>,
+    <http://www.w3.org/2002/07/owl#NamedIndividual>;
+  <http://www.semanticweb.org/admin/ontologies/2023/8/Esports/foundedIn> "September 2006";
+  <http://www.semanticweb.org/admin/ontologies/2023/8/Esports/organize> <http://www.semanticweb.org/admin/ontologies/2023/8/Esports/World_Championship> .
+
+<http://www.semanticweb.org/admin/ontologies/2023/8/Esports/SSU> a <http://www.semanticweb.org/admin/ontologies/2023/8/Esports/Game>,
+    <http://www.w3.org/2002/07/owl#NamedIndividual>;
+  <http://www.semanticweb.org/admin/ontologies/2023/8/Esports/hasTitle> "Super Smash Bros. Ultimate";
+  <http://www.semanticweb.org/admin/ontologies/2023/8/Esports/partOfTournament> <http://www.semanticweb.org/admin/ontologies/2023/8/Esports/Delfino_Maza> .
+
+<http://www.semanticweb.org/admin/ontologies/2023/8/Esports/SkyJay> a <http://www.w3.org/2002/07/owl#NamedIndividual>;
+  <http://www.semanticweb.org/admin/ontologies/2023/8/Esports/competeIn> <http://www.semanticweb.org/admin/ontologies/2023/8/Esports/SSU>;
+  <http://www.semanticweb.org/admin/ontologies/2023/8/Esports/fullName> "Juan Pablo";
+  <http://www.semanticweb.org/admin/ontologies/2023/8/Esports/playedInTournament> <http://www.semanticweb.org/admin/ontologies/2023/8/Esports/Delfino_Maza> .
+
+<http://www.semanticweb.org/admin/ontologies/2023/8/Esports/Team> a <http://www.w3.org/2002/07/owl#Class> .
+
+<http://www.semanticweb.org/admin/ontologies/2023/8/Esports/Tournament> a <http://www.w3.org/2002/07/owl#Class> .
+
+<http://www.semanticweb.org/admin/ontologies/2023/8/Esports/World_Championship> a
+    <http://www.semanticweb.org/admin/ontologies/2023/8/Esports/Tournament>, <http://www.w3.org/2002/07/owl#NamedIndividual>;
+  <http://www.semanticweb.org/admin/ontologies/2023/8/Esports/firstYearHosted> 2011;
+  <http://www.semanticweb.org/admin/ontologies/2023/8/Esports/hostGame> <http://www.semanticweb.org/admin/ontologies/2023/8/Esports/LoL> .
+
+<http://www.semanticweb.org/admin/ontologies/2023/8/Esports/competeIn> a <http://www.w3.org/2002/07/owl#ObjectProperty>,
+    <http://www.w3.org/2002/07/owl#TransitiveProperty> .
+
+<http://www.semanticweb.org/admin/ontologies/2023/8/Esports/firstYearHosted> a <http://www.w3.org/2002/07/owl#DatatypeProperty> .
+
+<http://www.semanticweb.org/admin/ontologies/2023/8/Esports/foundedIn> a <http://www.w3.org/2002/07/owl#DatatypeProperty> .
+
+<http://www.semanticweb.org/admin/ontologies/2023/8/Esports/fullName> a <http://www.w3.org/2002/07/owl#DatatypeProperty>;
+  <http://www.w3.org/2000/01/rdf-schema#domain> <http://www.semanticweb.org/admin/ontologies/2023/8/Esports/Person> .
+
+<http://www.semanticweb.org/admin/ontologies/2023/8/Esports/hasTitle> a <http://www.w3.org/2002/07/owl#DatatypeProperty> .
+
+<http://www.semanticweb.org/admin/ontologies/2023/8/Esports/hostGame> a <http://www.w3.org/2002/07/owl#ObjectProperty> .
+
+<http://www.semanticweb.org/admin/ontologies/2023/8/Esports/olofmeister> a <http://www.semanticweb.org/admin/ontologies/2023/8/Esports/Person>,
+    <http://www.w3.org/2002/07/owl#NamedIndividual>;
+  <http://www.semanticweb.org/admin/ontologies/2023/8/Esports/competeIn> <http://www.semanticweb.org/admin/ontologies/2023/8/Esports/ESL_One>;
+  <http://www.semanticweb.org/admin/ontologies/2023/8/Esports/fullName> "Olof Kajbjer Gustafsson";
+  <http://www.semanticweb.org/admin/ontologies/2023/8/Esports/won> <http://www.semanticweb.org/admin/ontologies/2023/8/Esports/ESL_One> .
+
+<http://www.semanticweb.org/admin/ontologies/2023/8/Esports/organize> a <http://www.w3.org/2002/07/owl#IrreflexiveProperty>,
+    <http://www.w3.org/2002/07/owl#ObjectProperty> .
+
+<http://www.semanticweb.org/admin/ontologies/2023/8/Esports/partOfTeam> a <http://www.w3.org/2002/07/owl#ObjectProperty> .
+
+<http://www.semanticweb.org/admin/ontologies/2023/8/Esports/partOfTournament> a <http://www.w3.org/2002/07/owl#AsymmetricProperty>,
+    <http://www.w3.org/2002/07/owl#ObjectProperty> .
+
+<http://www.semanticweb.org/admin/ontologies/2023/8/Esports/playedInTournament> a
+    <http://www.w3.org/2002/07/owl#ObjectProperty> .
+
+<http://www.semanticweb.org/admin/ontologies/2023/8/Esports/won> a <http://www.w3.org/2002/07/owl#ObjectProperty>,
+    <http://www.w3.org/2002/07/owl#SymmetricProperty> .

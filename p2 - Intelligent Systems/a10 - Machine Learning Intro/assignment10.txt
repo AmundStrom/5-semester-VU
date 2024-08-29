@@ -1,0 +1,18 @@
+assignment10.txt
+
+Roughly 87'%' of the emails are labeled as ham, this means that 13'%' are labeled as spam
+
+
+Accuracy is maybe not the best metric in our case since our dataset contains way more ham than spam, therefore it will preform well even if it guesses wrong on all the spam cases, since ham will just outweigh all the cases. Therefore it may be a better idea to look at the f1-score, which calculates the harmonic mean of precision and recall. Precision in this context represents the proportion of predicted spam messages that are actually spam, while recall represents the proportion of actual spam messages that are correctly predicted as spam.
+
+The idea is that the cases where it actually matters to get the prediction right (predicitng spam) will be valued more in the metric for the classifier.
+
+
+When choosing a model classification you have to consider many factors about the data, such as its charactersitics and patterns. The classification model I have choosen is called the support vector model (SVM), and we can see that it is a minor imporvement (94.5%) from the Naive Bayes classifier (91.7%). By looking at the data we can see why SVM is an improvment.
+
+Naive Bayes assumes that the data is truly independent, this will simplify the model but may miss out on complex relationships between the data. In our case it will look at each word independet and without context, which is of course wrong as words are connected to eachother to create meaning. SVM will find the optimal hyperplane to seperate different classes, and are therefore capable to capture a bigger context between classes.
+
+Naive Bayes is also very receptive when dealing with imbalanced datasets, meaning it will get a bias toward the class with the majority of examples. Which in our case there are way more exampels of non-spam emails than there are spam emails. SVM is way more robust when dealing with this problem.
+
+SVM compare to Naive Bayes has way more hyperparamaters to tune, meaning you can tune SVM to fit the dataset much better. This may require alot of resources to find the perfect hyperparamaters. In my case I have only used the 'linear' hyperplane paramater, but through a lot of trial and error you could probably improve the model even more with using different hyperparamaters.
+

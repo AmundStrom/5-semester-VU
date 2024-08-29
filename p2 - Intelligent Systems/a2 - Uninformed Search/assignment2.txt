@@ -1,0 +1,28 @@
+assignment2.txt
+2822237
+
+[17, 18, 19]
+[0, 1, 2]
+32
+
+The difference between the two implementations lies in how the algorithms handles the removal and checking of goal states on the nodes within the fringe.
+In BFS, this process occurs on the left side of the fringe, whereas in DFS, it takes place on the right side. But both implementations add the child nodes to the right side of the fringe. This results in BFS using a First In First Out (FIFO) approach, exploring the tree level by level. On the other hand, DFS uses a Last In First Out (LIFO) or stack approach, leading it to explore the tree leaf node by leaf node. 
+
+[5, 2, 6]
+[15, 1, 10]
+
+When we alter the card order and adjust the search algorithm, we observe differences in the nodes explored:
+
+    -32 nodes traversed with a defualt hand and BFS. 
+    -5 nodes traversed with a defualt hand and DFS. 
+    -24 nodes traversed with a reversed hand and BFS. 
+    -9 nodes traversed with a reversed hand and DFS.
+
+Changing from BFS to DFS shows a decrease in visited nodes in both scenarios. The reason for this is based on the DFS algorithm's systematic exploration of leaf nodes, with schnapsen's goal state being one such leaf node.
+
+Modifying the card order shows a change in nodes explored in all cases, both positivly and negativly. By changing the cards in the hand alters the node order in the tree, thereby modifying the tree's structure and influencing the number of nodes visited.
+
+Presenting changes in running time across these cases is challenging due to the inconsistency of the running time each time the problem is executed with the same parameters. However, a reduction in explored nodes should correspond to a decrease in running time.
+
+Creating a pair of hands where BFS is faster than DFS is not possible. This is because the DFS algorithm systematically explores the tree leaf by leaf, 
+while BFS traverses level by level. This means that by the time BFS reaches the first leaf node, DFS has already explored it. But in scenarios where the last leaf node in the tree is the goal state, they would be equally fast.

@@ -1,0 +1,216 @@
+@prefix : <http://www.semanticweb.org/admin/ontologies/2023/8/Esports#> .
+@prefix es: <http://www.semanticweb.org/admin/ontologies/2023/8/Esports/> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix xml: <http://www.w3.org/XML/1998/namespace> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@base <http://www.semanticweb.org/admin/ontologies/2023/8/Esports> .
+
+<http://www.semanticweb.org/admin/ontologies/2023/8/Esports> rdf:type owl:Ontology ;
+                                                              <http://purl.org/dc/elements/1.1/creator> "Amund" ;
+                                                              rdfs:comment "Contain metadata about esports in CS:GO, League of Legends and Super Smash Bros. Ultimate" ;
+                                                              rdfs:label "Esports" .
+
+#################################################################
+#    Annotation properties
+#################################################################
+
+###  http://purl.org/dc/elements/1.1/creator
+<http://purl.org/dc/elements/1.1/creator> rdf:type owl:AnnotationProperty .
+
+
+#################################################################
+#    Object Properties
+#################################################################
+
+###  http://www.semanticweb.org/admin/ontologies/2023/8/Esports/Member
+es:Member rdf:type owl:ObjectProperty ;
+          rdfs:domain es:Team ;
+          rdfs:range es:Player .
+
+
+###  http://www.semanticweb.org/admin/ontologies/2023/8/Esports/competeIn
+es:competeIn rdf:type owl:ObjectProperty ,
+                      owl:TransitiveProperty .
+
+
+###  http://www.semanticweb.org/admin/ontologies/2023/8/Esports/hostGame
+es:hostGame rdf:type owl:ObjectProperty .
+
+
+###  http://www.semanticweb.org/admin/ontologies/2023/8/Esports/organize
+es:organize rdf:type owl:ObjectProperty ,
+                     owl:IrreflexiveProperty .
+
+
+###  http://www.semanticweb.org/admin/ontologies/2023/8/Esports/partOfTeam
+es:partOfTeam rdf:type owl:ObjectProperty .
+
+
+###  http://www.semanticweb.org/admin/ontologies/2023/8/Esports/partOfTournament
+es:partOfTournament rdf:type owl:ObjectProperty ,
+                             owl:AsymmetricProperty .
+
+
+###  http://www.semanticweb.org/admin/ontologies/2023/8/Esports/playedInTournament
+es:playedInTournament rdf:type owl:ObjectProperty .
+
+
+###  http://www.semanticweb.org/admin/ontologies/2023/8/Esports/won
+es:won rdf:type owl:ObjectProperty ,
+                owl:SymmetricProperty .
+
+
+#################################################################
+#    Data properties
+#################################################################
+
+###  http://www.semanticweb.org/admin/ontologies/2023/8/Esports/firstYearHosted
+es:firstYearHosted rdf:type owl:DatatypeProperty .
+
+
+###  http://www.semanticweb.org/admin/ontologies/2023/8/Esports/foundedIn
+es:foundedIn rdf:type owl:DatatypeProperty .
+
+
+###  http://www.semanticweb.org/admin/ontologies/2023/8/Esports/fullName
+es:fullName rdf:type owl:DatatypeProperty ;
+            rdfs:domain es:Person .
+
+
+###  http://www.semanticweb.org/admin/ontologies/2023/8/Esports/hasTitle
+es:hasTitle rdf:type owl:DatatypeProperty .
+
+
+#################################################################
+#    Classes
+#################################################################
+
+###  http://www.semanticweb.org/admin/ontologies/2023/8/Esports/Game
+es:Game rdf:type owl:Class ;
+        owl:equivalentClass [ rdf:type owl:Restriction ;
+                              owl:onProperty es:partOfTournament ;
+                              owl:someValuesFrom es:Tournament
+                            ] ;
+        rdfs:subClassOf [ rdf:type owl:Restriction ;
+                          owl:onProperty es:partOfTournament ;
+                          owl:someValuesFrom es:Tournament
+                        ] .
+
+
+###  http://www.semanticweb.org/admin/ontologies/2023/8/Esports/League
+es:League rdf:type owl:Class .
+
+
+###  http://www.semanticweb.org/admin/ontologies/2023/8/Esports/Person
+es:Person rdf:type owl:Class .
+
+
+###  http://www.semanticweb.org/admin/ontologies/2023/8/Esports/Player
+es:Player rdf:type owl:Class ;
+          owl:equivalentClass [ rdf:type owl:Restriction ;
+                                owl:onProperty es:competeIn ;
+                                owl:someValuesFrom es:Game
+                              ] ;
+          rdfs:subClassOf es:Person ,
+                          [ rdf:type owl:Restriction ;
+                            owl:onProperty es:partOfTeam ;
+                            owl:someValuesFrom es:Team
+                          ] .
+
+
+###  http://www.semanticweb.org/admin/ontologies/2023/8/Esports/Team
+es:Team rdf:type owl:Class .
+
+
+###  http://www.semanticweb.org/admin/ontologies/2023/8/Esports/Tournament
+es:Tournament rdf:type owl:Class .
+
+
+#################################################################
+#    Individuals
+#################################################################
+
+###  http://www.semanticweb.org/admin/ontologies/2023/8/Esports/Delfino_Maza
+es:Delfino_Maza rdf:type owl:NamedIndividual ,
+                         es:Tournament ;
+                es:hostGame es:SSU ;
+                es:firstYearHosted 2023 .
+
+
+###  http://www.semanticweb.org/admin/ontologies/2023/8/Esports/ESL_One
+es:ESL_One rdf:type owl:NamedIndividual ;
+           es:competeIn es:CS:GO ;
+           es:firstYearHosted 2014 .
+
+
+###  http://www.semanticweb.org/admin/ontologies/2023/8/Esports/Fnatic
+es:Fnatic rdf:type owl:NamedIndividual ;
+          es:Member es:olofmeister ;
+          es:foundedIn "23 July 2004" .
+
+
+###  http://www.semanticweb.org/admin/ontologies/2023/8/Esports/LoL
+es:LoL rdf:type owl:NamedIndividual ;
+       es:partOfTournament es:World_Championship ;
+       es:hasTitle "League of Legends" .
+
+
+###  http://www.semanticweb.org/admin/ontologies/2023/8/Esports/Phreak
+es:Phreak rdf:type owl:NamedIndividual ,
+                   es:Person ;
+          es:organize es:World_Championship ;
+          es:fullName "David Turley" .
+
+
+###  http://www.semanticweb.org/admin/ontologies/2023/8/Esports/Rekkles
+es:Rekkles rdf:type owl:NamedIndividual ;
+           es:partOfTeam es:Fnatic ;
+           es:fullName "Carl Martin Erik Larsson" .
+
+
+###  http://www.semanticweb.org/admin/ontologies/2023/8/Esports/Riot_Games
+es:Riot_Games rdf:type owl:NamedIndividual ,
+                       es:League ;
+              es:organize es:World_Championship ;
+              es:foundedIn "September 2006" .
+
+
+###  http://www.semanticweb.org/admin/ontologies/2023/8/Esports/SSU
+es:SSU rdf:type owl:NamedIndividual ,
+                es:Game ;
+       es:partOfTournament es:Delfino_Maza ;
+       es:hasTitle "Super Smash Bros. Ultimate" .
+
+
+###  http://www.semanticweb.org/admin/ontologies/2023/8/Esports/SkyJay
+es:SkyJay rdf:type owl:NamedIndividual ;
+          es:competeIn es:SSU ;
+          es:playedInTournament es:Delfino_Maza ;
+          es:fullName "Juan Pablo" .
+
+
+###  http://www.semanticweb.org/admin/ontologies/2023/8/Esports/World_Championship
+es:World_Championship rdf:type owl:NamedIndividual ,
+                               es:Tournament ;
+                      es:hostGame es:LoL ;
+                      es:firstYearHosted 2011 .
+
+
+###  http://www.semanticweb.org/admin/ontologies/2023/8/Esports/olofmeister
+es:olofmeister rdf:type owl:NamedIndividual ,
+                        es:Person ;
+               es:competeIn es:ESL_One ;
+               es:won es:ESL_One ;
+               es:fullName "Olof Kajbjer Gustafsson" .
+
+
+###  http://www.semanticweb.org/admin/ontologies/2023/8/Esports/CS:GO
+es:CS:GO rdf:type owl:NamedIndividual ,
+                  es:Game ;
+         es:partOfTournament es:ESL_One ;
+         es:hasTitle "Counter strike : Global offensive" .
+
+
+###  Generated by the OWL API (version 4.5.25.2023-02-15T19:15:49Z) https://github.com/owlcs/owlapi

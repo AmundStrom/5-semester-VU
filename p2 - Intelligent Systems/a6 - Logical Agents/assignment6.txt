@@ -1,0 +1,10 @@
+assignment6.txt
+
+There are 2 models for the knowledge base, this means that there are two possible ways of assiging A, B and C either a True or False value which makes every clause of our knowledge base true. This also means that our knowledge base is satisfiable, which means that there exists atleast one model for a knowledge base.
+
+
+If KB = {-A -> B, B -> A, A -> (C ^ D)} entails A ^ C ^ D, this means that for every model of the knowledge base A, C and D must be true.
+
+
+We see that KB = {-A -> B, B -> A, A -> (C ^ D)} is satisfiable. If we want to check that S = {A ^ C ^ D} is entailed by using proof by refutation, we must negate S and add it into the knowledge base and check if it becomes unsatisfiable. We can see that there is no models and it is therefore unsatisfiable, we can the conclude that S is entailed by the knowledge base.
+

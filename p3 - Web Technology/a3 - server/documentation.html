@@ -1,0 +1,244 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Documantation for A3 by Group 10</title>
+    <link rel="stylesheet" type="text/css" href="doc-style.css">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+</head>
+<body><div class="main">
+
+    <!-- Title -->
+    <h1 class="title">RESTful HTTP API for Assignment #3 </h1>
+
+      <!-- Navigation section -->
+  <nav>
+    <a href="#all">Full data set retreaval</a> |
+    <a href="#create">Create</a> |
+    <a href="#retrieve">Retrieve</a> |
+    <a href="#update">Update</a> |
+    <a href="#delete">Delete</a> 
+  </nav>
+
+
+    <!-- Documantation information -->
+  <section id="all">
+    <h2 class="basich2"><u>Full data set retreaval</u></h2>
+
+    <p> 
+        The (/database) endpoint URI allows clients to retrieve the full dataset from the database. 
+        This endpoint does not require any parameters in the URL.
+        The endpoint uses GET method to retrieve data from the server. 
+        Content-Type is set to (application/json) which ensures that any exchanged between the client and the server is in the JSON format.
+        It then queries the database to retrieve all items and responds with the relevant HTTP status codes after cheking for errors. 
+    </p>
+
+    <p><strong>Example input:</strong> GET http://localhost:3000/database </p>
+    <p><strong>Example of response output:</strong> [
+        {
+            "name": "Example 1",
+            "year": "2018",
+            "genre": "video-game",
+            "poster": "https://example1.png",
+            "description": "Example 1 description."
+        },
+        {
+            "name": "Example 2",
+            "year": "2018",
+            "genre": "video-game",
+            "poster": "https://example2.png",
+            "description": "Example 2 description."
+        }
+    ] </p>
+
+    <p><strong>Examples of HTTP response codes for retrieving the full data set:</strong></p>
+
+    <table>
+        <tr>
+          <th>HTTP status code</th>
+          <th>Description</th>
+        </tr>
+        <tr>
+            <td>200 OK</td>
+            <td>This status code is returned once the retreaval of the full dataset is a success.</td>
+        </tr>
+        <tr>
+            <td>500 Internal Server Error</td>
+            <td>This status code is returned if there is an internal server error during the opertation.</td>
+        </tr>               
+    </table>
+
+    </section>
+
+    <section id="create">
+        <h2 class="basich2"><u> Create </u></h2>
+
+        <p> Create is part of the CRUD interface that deals with adding data for a new photo item. 
+            More specifically, it adds new photo items to the database by making a POST request to the endpoint. 
+            The endpoint URI for this operation is (/database) and it acts as the base path for adding new photo items to the database. 
+            The content-type here is also set as (application/json), meaning that the response body will be in JSON format. 
+            This opertation of course has validation checks as well. 
+            If all fields are present and inserting was a success, it returns a 200 OK response. 
+            However, if there are any errors, it returns the appropriate error messages as well as its respective HTTP response codes. 
+        </p>
+
+        <p><strong>Example input:</strong> POST http://localhost:3000/database </p>
+
+        <p><strong>Examples of HTTP response codes for Create:</strong></p>
+
+        <table>
+            <tr>
+              <th>HTTP status code</th>
+              <th>Description</th>
+            </tr>
+            <tr>
+                <td>200 OK</td>
+                <td>This status code is for the successful addition of a new photo item.</td>
+            </tr>
+            <tr>
+                <td>400 Bad Request</td>
+                <td>This status code is returned if the necessary fields are missing from the JSON body or if the request is not in the JSON content type.</td>
+            </tr>
+            <tr>
+                <td>500 Internal Server Error</td>
+                <td>This status code is returned if there is an internal server error during the opertation.</td>
+            </tr>               
+        </table>
+
+    </section>
+
+    <section id="retrieve">
+        <h2 class="basich2"><u> Retrieve </u></h2>
+
+        <p> 
+            Retrieve is apart of the  CRUD interface which deals with listing the data of a specific item. 
+            More specifically, it retrieves data of a specific item from the database with the GET method.
+            The endpoint URL in this case is (/database/item/:id) and it consists of two parts. 
+            First is (/database/item) which represents the base path for accessing items in the database. 
+            Second is the route parameter (/:id), which allows dynamic values to be passed in the URL. 
+            It represents the unique identifier of the specific item to be retrieved. 
+            This operation expects the id parameter to be a valid number and it also returns the data of the specified item in JSON format by setting the content-type in the HTTP response message to (application/json).
+            It handles various scenarios such as invalid or non-existing id, internal server errors and a sucessful operation. 
+            It returns appropriate HTTP status codes and error messages according to each scenario.                
+        </p>
+
+        <p><strong>Example input:</strong> GET http://localhost:3000/database/item/2 </p>
+
+        <p><strong>Response output:</strong> [
+            {
+                "name": "Example 1",
+                "year": "2018",
+                "genre": "video-game",
+                "poster": "https://example1.png",
+                "description": "Example 1 description."
+            }
+        ] </p>
+
+        <p><strong>Examples of HTTP response codes for Retrieve:</strong></p>
+
+        <table>
+            <tr>
+              <th>HTTP status code</th>
+              <th>Description</th>
+            </tr>
+            <tr>
+                <td>200 OK</td>
+                <td>This status code is returned if the server is returning requested data.</td>
+            </tr>
+            <tr>
+                <td>400 Bad Request</td>
+                <td>This status code is returned if the given ID in the URL is not a valid number.</td>
+            </tr>
+            <tr>
+                <td>404 Not Found</td>
+                <td>This status code is returned if the given ID does not exist in the database.</td>
+            </tr>
+            <tr>
+                <td>500 Internal Server Error</td>
+                <td>This status code is returned if there is an internal server error during the opertation.</td>
+            </tr>               
+        </table>
+    </section>
+
+    <section id="update">
+        <h2 class="basich2"><u> Update </u></h2>
+
+        <p> 
+            Update is part of the CRUD interface that deals with the question of "How to change data of a specific item".
+            The endpoint URI for Update is (/database/item/:id) with the (/:id) parameter just like for retrieve. 
+            However, the uptate operation uses the PUT method to update the data of a specific existing item.
+            Like previous operation it expects JSON data in the request body by setting the contenior-type to (application/json).
+            Then, it checks if the required fields are present in the JSON body as well as if id parameter is not a number or if it is out of bounds.
+            It returns the relevant HTTP response codes depending on the an error response.
+            Otherwise, it updates the item in the database and sends a success response.
+        </p>
+
+        <p><strong>Example:</strong> PUT http://localhost:3000/database/item/2 </p>
+
+        <p><strong>Examples of HTTP response codes for Update:</strong></p>
+
+        <table>
+            <tr>
+              <th>HTTP status code</th>
+              <th>Description</th>
+            </tr>
+            <tr>
+                <td>200 OK</td>
+                <td>This status code is returned if the update was successful.</td>
+            </tr>
+            <tr>
+                <td>400 Bad Request</td>
+                <td>This status code is returned if the ID is not a valid number or is outside the bounds.</td>
+            </tr>
+            <tr>
+                <td>404 Not Found</td>
+                <td>This status code is returned if the given ID does not exist in the database.</td>
+            </tr>
+            <tr>
+                <td>500 Internal Server Error</td>
+                <td>This status code is returned if there is an internal server error during the opertation.</td>
+            </tr>               
+        </table>
+    </section>
+
+    <section id="artist">
+        <h2 class="basich2"><u> Delete </u></h2>
+        <p> 
+            Delete is part of the CRUD interface that deals with removing data of a specific item.
+            This operation uses the DELETE method to remove the data of a specific item from the database.
+            It uses the same endpoint URL as Retrive and Update (/database/item/:id) with same parameter (/:id).
+            It first validates the id parameter to ensure it is a number and within the bounds of the database.
+            If the id parameter is invalid or out of bounds, it returns an error response.
+            Otherwise, it deletes the item from the database and sends a success response.
+        </p>
+       
+        <p><strong>Example input:</strong> DELETE http://localhost:3000/database/item/2 </p>
+
+        <p><strong>Examples of HTTP response codes for Delete:</strong></p>
+
+        <table>
+            <tr>
+              <th>HTTP status code</th>
+              <th>Description</th>
+            </tr>
+            <tr>
+                <td>200 OK</td>
+                <td>This status code is returned if the deletion was successful.</td>
+            </tr>
+            <tr>
+                <td>400 Bad Request</td>
+                <td>This status code is returned if the ID is not a valid number or is outside the bounds of the database.</td>
+            </tr>
+            <tr>
+                <td>404 Not Found</td>
+                <td>This status code is returned if the given ID does not exist in the database.</td>
+            </tr>
+            <tr>
+                <td>500 Internal Server Error</td>
+                <td>This status code is returned if there is an internal server error during the opertation.</td>
+            </tr>               
+        </table>
+    </section>
+
+</div></body>
+</html>
